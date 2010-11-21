@@ -5,10 +5,10 @@ BASE_PAGE   = "http://dig.ccmixter.org/%soffset=%d"
 PAGE_SIZE	= 10
 ####################################################################################################
 def Start():
-  Plugin.AddPrefixHandler(PREFIX, MainMenu, "ccMixter Music Discovery", "icon-default.png", "art-default.png")
+  Plugin.AddPrefixHandler(PREFIX, MainMenu, "ccMixter", "icon-default.png", "art-default.jpg")
   Plugin.AddViewGroup("Details", viewMode="InfoList", mediaType="audio")
-  MediaContainer.art = R('art-default.png')
-  MediaContainer.title1 = 'ccMixter Music Discovery'
+  MediaContainer.art = R('art-default.jpg')
+  MediaContainer.title1 = 'ccMixter'
   DirectoryItem.thumb=R("icon-default.png")
   
     
@@ -26,9 +26,10 @@ def MainMenu():
     dir.Append(Function(DirectoryItem(SectionTracks, "Party Music"), path="party_music?"))
     dir.Append(Function(DirectoryItem(SectionTracks, "Chill Cubicle Music"), path="cubicle_music?"))
     
-    dir.Append(Function(InputDirectoryItem(Search, title="Search ...", thumb=R("search.png"), prompt="Search cc.mixter back-catalogue and discover new music")))
+    dir.Append(Function(InputDirectoryItem(Search, title="Search ...", thumb=R("icon-search.png"), prompt="Search cc.mixter back-catalogue and discover new music")))
     return dir
    
+#######################################################################################################
 def Search(sender, query):
 	path = "dig?dig-query="+String.Quote(query)+"&"
 	return SectionTracks(sender, path)
